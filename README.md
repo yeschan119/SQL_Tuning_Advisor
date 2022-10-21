@@ -1,8 +1,5 @@
 # SQL_Tuning_Advisor
-Design of the SQL Tuning Advisor(Tuning Advisor 설계)
-
-##About this Repository
-### Sql Tuning Advisor 설계 프로젝트
+SQL Tuning Advisor Design Project(Tuning Advisor 설계 프로젝트)
 
 ## Project Process
 ### SQL Tuning Advisor 조사
