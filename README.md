@@ -4,9 +4,6 @@ SQL Tuning Advisor Design Project(Tuning Advisor 설계 프로젝트)
 ## Project Process
 ## 조사(Research)
 ### SQL Tuning Advisor 조사
-==Tuning Advisor의 동작 원리를 알아보자==
-==='''Input'''===
-====Automatic Database Diagnostic Monitor (ADDM)====
 
 *SQL Tuning Advisor의 핵심 input
 *매 시간마다 돈다.
