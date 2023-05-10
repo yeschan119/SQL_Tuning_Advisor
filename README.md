@@ -5,14 +5,14 @@ SQL Tuning Advisor Design Project(Tuning Advisor 설계 프로젝트)
 ## 조사(Research)
 ### SQL Tuning Advisor 조사
 
-====Automatic Workload Repository (AWR)====
+# Automatic Workload Repository (AWR)
 
-====Shared SQL area====
+## Shared SQL area
 
 + AWR에 저장되지 않은 최근의 SQL statement들을 파악하기 위해 사용된다.
 + AWR과 더불어 high-load SQL statement를 파악하는데 사용되는 듯 하다.
 
-====SQL Tuning Set====
+# SQL Tuning Set
 
 + Execution context와 함께 SQL statement를 저장하는 database object
 + 각 statement의 performance를 측정하거나 예상보다 성능이 시원찮은 statement를 식별하는 것이 목적
