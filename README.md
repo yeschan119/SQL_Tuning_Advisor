@@ -1,23 +1,26 @@
 # SQL_Tuning_Advisor
 SQL Tuning Advisor Design Project(Tuning Advisor 설계 프로젝트)
+# Milesstone
+SQL Tuning Advisor기능 레벨은 Limited Scope와 Comprehensive로
+## LIMITED SCOPE
++ 유저가 Tuning Task를 직접 정의하고 DB가 이 Task들을 관리할 수 있도록 관련 패키지 함수 및 오브젝트 구현하기
++ Tuning task의 SQL이 접근하는 DB 오브젝트 통계 missing 혹은 stale 여부 판별하는 로직 만들기
++ Tuning task의 SQL 수행 시 접근하는 table에 대한 가상 index를 생성하고, 해당 index 적용 시의 benefit 계산하는 로직 만들기
++ Tuning task의 SQL의 구조 및 문법들을 결과값이 바뀌지 않는 선에서 조작할 수 있는 로직을 구현하고, 조작된 각각의 쿼리들로부터 얻을 수 있는 benefit 계산하는 로직 만들기
++ 비용이 많이 드는 Not In operation을 찾고 개선 방안 제안
++ 비용이 많이 드는 UNION set operation을 찾고 개선 방안 제안
++ Index data type mismatch 찾고 개선 방안 제안
++ Cartesian product 형성하는 join predicate 찾고 개선 방안 제안
++ Report Tuning Task 구현
++ Update / Delete / Modify Tuning Task
 
-## Project Process
-## 조사(Research)
-### SQL Tuning Advisor 조사
-
-# Automatic Workload Repository (AWR)
-
-## Shared SQL area
-
-+ AWR에 저장되지 않은 최근의 SQL statement들을 파악하기 위해 사용된다.
-+ AWR과 더불어 high-load SQL statement를 파악하는데 사용되는 듯 하다.
-
-# SQL Tuning Set
-
-+ Execution context와 함께 SQL statement를 저장하는 database object
-+ 각 statement의 performance를 측정하거나 예상보다 성능이 시원찮은 statement를 식별하는 것이 목적
-+ DB는 SQL statement를 input으로 받으면 해당 tuning set을 먼저 구성해야 한다.
-
+## COMPREHENSIVE
++ Tuning mode에서 기존보다 더욱 정확한 selectivity를 계산할 수 있도록 동적 샘플링 여러 번 수행하는 로직 만들기
++ Tuning mode에서 기존보다 더욱 정확한 selectivity를 계산할 수 있도록 동적 샘플링 여러 번 수행하는 로직 만들기
++ Tuning mode에서 기존보다 더욱 정확한 selectivity를 계산할 수 있도록 partial execution을 수행하는 로직 만들기
++ Tuning mode에서 past execution history를 바탕으로 optimizer mode setting (e.g. <code>FIRST_ROW, ALL_ROWS</code>)을 개선할 수 있는 로직 만들기
++ Tuning task의 SQL에 대한 alternative plan을 search하고 original plan과의 비용을 비교하는 로직 만들기
++ 유저가 Tuning Mode 실행 결과를 리포트 형식으로 받아볼 수 있도록 로직 구현하기
 #### Create Tuning Task 조사
 #### Exectue Tuning Task 조사
 #### Report Tuning Task 조사
