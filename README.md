@@ -102,16 +102,16 @@ SQL Tuning Advisor기능 레벨은 Limited Scope와 Comprehensive로
   Advisor 이름과 ID를 모아놓은 테이블
   Advisor 종류는 다음과 같다.
   ADVISOR_ID            ADVISOR_NAME 		    PROPERTY
-  ---------- ------------------------------ ----------
-	 1 ADDM 				            1
+  ---------- ------------------------------ -------------
+	 1 ADDM 				  1
 	 2 SQL Access Advisor			 271
-	 3 Undo Advisor 			      1
+	 3 Undo Advisor 			  1
 	 4 SQL Tuning Advisor			 935
-	 5 Segment Advisor			    67
-	 6 SQL Workload Manager 		0
-	 7 Tune MView				        31
-	 8 SQL Performance Analyzer	935
+	 5 Segment Advisor			  67
+	 6 SQL Workload Manager 		   0
+	 7 Tune MView				   31
+	 8 SQL Performance Analyzer		  935
 	 9 SQL Repair Advisor			  679
-	10 Compression Advisor			 3
+	10 Compression Advisor			   3
  ```
  
