@@ -26,10 +26,7 @@ SQL Tuning Advisor기능 레벨은 Limited Scope와 Comprehensive로
 + Tuning mode에서 past execution history를 바탕으로 optimizer mode setting (e.g. <code>FIRST_ROW, ALL_ROWS</code>)을 개선할 수 있는 로직 만들기
 + Tuning task의 SQL에 대한 alternative plan을 search하고 original plan과의 비용을 비교하는 로직 만들기
 + 유저가 Tuning Mode 실행 결과를 리포트 형식으로 받아볼 수 있도록 로직 구현하기
-#### Create Tuning Task 조사
-#### Exectue Tuning Task 조사
-#### Report Tuning Task 조사
-#### Accept Sql Profile 조사
+
 ## 설계(Design)
 ### SQL Tuning Advisor 설계
 #### Create Tuning Task 설계
