@@ -2,7 +2,7 @@
 SQL Tuning Advisor Design Project(Tuning Advisor 설계 프로젝트)
 # Purpose
 SQL Tuning Advisor Package를 개발하여 SQL Tunning 지원
-👨‍👩‍👧‍👦 Members
+# 👨‍👩‍👧‍👦 Members
 정민우(Researcher)
 강응찬(Researcher)
 # Milesstone
