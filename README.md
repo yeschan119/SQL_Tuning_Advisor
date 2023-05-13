@@ -92,11 +92,12 @@ SQL Tuning Advisor기능 레벨은 Limited Scope와 Comprehensive로
 ## 구현(Implementation)
 ### SQL Tuning Advisor 구현
 #### Tuning Advisor관련 Table들과 View들 구현
-  + ```
+  + _advisor_definitions 
+  ```
     create table sys._advisor_definitions (
-					ADVISOR_ID        NUMBER  NOT NULL,
-					ADVISOR_NAME      VARCHAR2(30) NOT NULL,
-					PROPERTY          NUMBER   NOT NULL
+			ADVISOR_ID        NUMBER  NOT NULL,
+			ADVISOR_NAME      VARCHAR2(30) NOT NULL,
+			PROPERTY          NUMBER   NOT NULL
     );
   
   Advisor 이름과 ID를 모아놓은 테이블
@@ -114,4 +115,3 @@ SQL Tuning Advisor기능 레벨은 Limited Scope와 Comprehensive로
 	 9 SQL Repair Advisor			  679
 	10 Compression Advisor			   3
  ```
- 
