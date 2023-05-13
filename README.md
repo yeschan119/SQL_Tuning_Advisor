@@ -41,6 +41,14 @@ SQL Tuning Advisor기능 레벨은 Limited Scope와 Comprehensive로
 
 ## 설계(Design:Oracle Tuning Advisor 참조)
 ### SQL Tuning Advisor 설계
+#### Tuning Advisor 관련 패키지 body & specification(spec) 설계
+  + PKG_DBMS_SQLTUNE pkg body & spec
+    + body : tuning advisor의 기본 기능들(create, execute, report..)을 실행할 수 있는 procedure, function 선언부
+    + spec : body에 선언되어 있는 function, procedure 들의 구현부
+  + PKG_DBMS_SQLTUNE_INTERNAL pkg body & spec
+    + body : Execute Tuning Task 단계에서 진행하는 동작들을 수행하기 위한 함수 선언부
+    + spec : body에 선언되어 있는 function, procedure들의 구현부
+#### Tuning Adviosr관련 Table들과 View들 설계
   + Tuning Advisor에 사용되는 System Table을 생성(DB Booting시 생성되는 테이블)
     + Advisor_Defitinions
       + DB에는 각종 Advisor들이 존재하는데 이 Advisor들을 관리하는 테이블 생성
@@ -57,7 +65,15 @@ SQL Tuning Advisor기능 레벨은 Limited Scope와 Comprehensive로
       + 각각의 Task에 따라 부과된 object_id, objec_name을 조합하여 저장하는 테이블
     + Advisor_Logs
       + Tuning과정을 각 단계별 Logging하는 테이블
+    + DBA_ADVISOR_DEFINITIONS view 설계
+    + DBA_ADVISOR_TASKS view 설계
+    + DBA_ADVISOR_OBJECTS view 설계
+    + DBA_ADVISOR_EXECUTIONS view 설계
+    + DBA_ADVISOR_LOG view 설계
+    + ...
 #### Create Tuning Task 설계
+  
+    + 
 #### Exectue Tuning Task 설계
 #### Report Tuning Task 설계
 #### Accept Sql Profile 설계
