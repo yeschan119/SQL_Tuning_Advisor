@@ -72,8 +72,7 @@ SQL Tuning Advisor기능 레벨은 Limited Scope와 Comprehensive로
     + DBA_ADVISOR_LOG view 설계
     + ...
 #### Create Tuning Task 설계
-  
-    + 
+  + user로부터 입력되는 값들을(ex: sql_text)
 #### Exectue Tuning Task 설계
 #### Report Tuning Task 설계
 #### Accept Sql Profile 설계
