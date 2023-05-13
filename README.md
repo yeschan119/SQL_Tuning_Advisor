@@ -48,6 +48,7 @@ SQL Tuning Advisor기능 레벨은 Limited Scope와 Comprehensive로
   + PKG_DBMS_SQLTUNE_INTERNAL pkg body & spec
     + body : Execute Tuning Task 단계에서 진행하는 동작들을 수행하기 위한 함수 선언부
     + spec : body에 선언되어 있는 function, procedure들의 구현부
+  + PKG_DBMS_SQLTUNE_UTIL C언어러 구현이 필요한 subprogram들을 별도로 분리한 패키지
 #### Tuning Adviosr관련 Table들과 View들 설계
   + Tuning Advisor에 사용되는 System Table을 생성(DB Booting시 생성되는 테이블)
     + Advisor_Defitinions
@@ -72,8 +73,44 @@ SQL Tuning Advisor기능 레벨은 Limited Scope와 Comprehensive로
     + DBA_ADVISOR_LOG view 설계
     + ...
 #### Create Tuning Task 설계
-  + user로부터 입력되는 값들을(ex: sql_text)
+  + user로부터 입력되는 값들을(ex: sql_id, scope, task_name...)이용해서 tuning task 생성.
+  + null값들에 대해 default value 생성
+  + input값들에 대해 valid check를 진행
+  + input value와 생성되 값들을 system table에 저장.
 #### Exectue Tuning Task 설계
+  + Statistical Analysis
+    + Table, Index에 대한 통계정보의 Missing or Stale 여부를 파악.
+  + Access Path Analysis
+    + Index 여부에 따른 실행 비용 최적화 여부를 판별하고 이를 제시
+    + SQL Access Advisor를 실행할 것을 제안.
+  + SQL Structural Analysis(Syntax / Semantic 단계에서 할 수 있는 쿼리 성능 저하 요소 판단 및 개선방안 제안)
+    + NOT IN을 NOT EXIST로 대체하라고 제안하거나 UNION을 UNION ALL을 대체할 것을 제안
+    + Index Column과 where절에 사용된 column의 datatype mismatch로 인한 비효율을 감지하고 이를 고칠 것을 제안
+    + Missing Join Condition을 감지(Design Mistakes)
 #### Report Tuning Task 설계
 #### Accept Sql Profile 설계
 ## 구현(Implementation)
+### SQL Tuning Advisor 구현
+#### Tuning Advisor관련 Table들과 View들 구현
+  + <syntaxhighlight lang = 'sql'>
+    create table sys._advisor_definitions (
+					ADVISOR_ID        NUMBER  NOT NULL,
+					ADVISOR_NAME      VARCHAR2(30) NOT NULL,
+					PROPERTY          NUMBER   NOT NULL
+    );
+  
+  Advisor 이름과 ID를 모아놓은 테이블
+  Advisor 종류는 다음과 같다.
+  ADVISOR_ID            ADVISOR_NAME 		    PROPERTY
+  ---------- ------------------------------ ----------
+	 1 ADDM 				            1
+	 2 SQL Access Advisor			 271
+	 3 Undo Advisor 			      1
+	 4 SQL Tuning Advisor			 935
+	 5 Segment Advisor			    67
+	 6 SQL Workload Manager 		0
+	 7 Tune MView				        31
+	 8 SQL Performance Analyzer	935
+	 9 SQL Repair Advisor			  679
+	10 Compression Advisor			 3
+    </syntaxhighlight>
