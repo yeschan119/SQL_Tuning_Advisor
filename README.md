@@ -92,7 +92,7 @@ SQL Tuning Advisor기능 레벨은 Limited Scope와 Comprehensive로
 ## 구현(Implementation)
 ### SQL Tuning Advisor 구현
 #### Tuning Advisor관련 Table들과 View들 구현
-  + <syntaxhighlight lang = 'sql'>
+  + ```
     create table sys._advisor_definitions (
 					ADVISOR_ID        NUMBER  NOT NULL,
 					ADVISOR_NAME      VARCHAR2(30) NOT NULL,
@@ -113,4 +113,5 @@ SQL Tuning Advisor기능 레벨은 Limited Scope와 Comprehensive로
 	 8 SQL Performance Analyzer	935
 	 9 SQL Repair Advisor			  679
 	10 Compression Advisor			 3
-    </syntaxhighlight>
+ ```
+ 
