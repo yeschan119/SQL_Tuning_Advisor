@@ -1,5 +1,10 @@
 # SQL_Tuning_Advisor
 SQL Tuning Advisor Design Project(Tuning Advisor 설계 프로젝트)
+# Purpose
+SQL Tuning Advisor Package를 개발하여 SQL Tunning 지원
+👨‍👩‍👧‍👦 Members
+정민우(Researcher)
+강응찬(Researcher)
 # Milesstone
 SQL Tuning Advisor기능 레벨은 Limited Scope와 Comprehensive로
 ## LIMITED SCOPE
@@ -8,7 +13,7 @@ SQL Tuning Advisor기능 레벨은 Limited Scope와 Comprehensive로
 + Tuning task의 SQL 수행 시 접근하는 table에 대한 가상 index를 생성하고, 해당 index 적용 시의 benefit 계산하는 로직 만들기
 + Tuning task의 SQL의 구조 및 문법들을 결과값이 바뀌지 않는 선에서 조작할 수 있는 로직을 구현하고, 조작된 각각의 쿼리들로부터 얻을 수 있는 benefit 계산하는 로직 만들기
 + 비용이 많이 드는 Not In operation을 찾고 개선 방안 제안
-+ 비용이 많이 드는 UNION set operation을 찾고 개선 방안 제안
+비용이 많이 드는 UNION set operation을 찾고 개선 방안 제안
 + Index data type mismatch 찾고 개선 방안 제안
 + Cartesian product 형성하는 join predicate 찾고 개선 방안 제안
 + Report Tuning Task 구현
