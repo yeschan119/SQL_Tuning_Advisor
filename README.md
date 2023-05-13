@@ -1,13 +1,24 @@
 # SQL_Tuning_Advisor
 SQL Tuning Advisor Design Project(Tuning Advisor 설계 프로젝트)
+
 # Purpose
 SQL Tuning Advisor Package를 개발하여 SQL Tunning 지원
+Develop SQL_Tuning_Advisor package & Functions to use this for SQL tuning.
+
 # 👨‍👩‍👧‍👦 Members
 정민우(Researcher)
 강응찬(Researcher)
+
+# Tech Stack
++ RDBMS
++ PL/SQL
++ C language
++ shell script
+
 # Milesstone
 SQL Tuning Advisor기능 레벨은 Limited Scope와 Comprehensive로
 일단 Limited Scope 개발 완료가 목표.
+
 ## LIMITED SCOPE
 + 유저가 Tuning Task를 직접 정의하고 DB가 이 Task들을 관리할 수 있도록 관련 패키지 함수 및 오브젝트 구현하기
 + Tuning task의 SQL이 접근하는 DB 오브젝트 통계 missing 혹은 stale 여부 판별하는 로직 만들기
@@ -28,8 +39,24 @@ SQL Tuning Advisor기능 레벨은 Limited Scope와 Comprehensive로
 + Tuning task의 SQL에 대한 alternative plan을 search하고 original plan과의 비용을 비교하는 로직 만들기
 + 유저가 Tuning Mode 실행 결과를 리포트 형식으로 받아볼 수 있도록 로직 구현하기
 
-## 설계(Design)
+## 설계(Design:Oracle Tuning Advisor 참조)
 ### SQL Tuning Advisor 설계
+  + Tuning Advisor에 사용되는 System Table을 생성(DB Booting시 생성되는 테이블)
+    + Advisor_Defitinions
+      + DB에는 각종 Advisor들이 존재하는데 이 Advisor들을 관리하는 테이블 생성
+        + ADDM
+        + SQL Access Advisor
+        + Undo Advisor
+        + SQL Tuning Advisor
+        + SQL Workload Manager
+        + ...
+    + Advisor_Tasks
+      + 각종 Advisor 수행 단위를 Task라고 하는데, 이 Tasks를 저장하고 관리하는 테이블
+    + Advisor_OBject_Types
+    + Advisor_Objects
+      + 각각의 Task에 따라 부과된 object_id, objec_name을 조합하여 저장하는 테이블
+    + Advisor_Logs
+      + Tuning과정을 각 단계별 Logging하는 테이블
 #### Create Tuning Task 설계
 #### Exectue Tuning Task 설계
 #### Report Tuning Task 설계
