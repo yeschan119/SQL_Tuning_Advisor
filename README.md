@@ -92,26 +92,88 @@ SQL Tuning Advisor기능 레벨은 Limited Scope와 Comprehensive로
 ## 구현(Implementation)
 ### SQL Tuning Advisor 구현
 #### Tuning Advisor관련 Table들과 View들 구현
-  + _advisor_definitions 
+  + sys._advisor_definitions 
   ```
     create table sys._advisor_definitions (
 			ADVISOR_ID        NUMBER  NOT NULL,
 			ADVISOR_NAME      VARCHAR2(30) NOT NULL,
 			PROPERTY          NUMBER   NOT NULL
     );
-  
-  Advisor 이름과 ID를 모아놓은 테이블
-  Advisor 종류는 다음과 같다.
-  ADVISOR_ID            ADVISOR_NAME 		    PROPERTY
-  ---------- ------------------------------ -------------
-	 1 ADDM 				  1
-	 2 SQL Access Advisor			 271
-	 3 Undo Advisor 			  1
-	 4 SQL Tuning Advisor			 935
-	 5 Segment Advisor			  67
-	 6 SQL Workload Manager 		   0
-	 7 Tune MView				   31
-	 8 SQL Performance Analyzer		  935
-	 9 SQL Repair Advisor			  679
-	10 Compression Advisor			   3
  ```
++ sys._advisor_tasks
+```
+create table sys._advisor_tasks (
+    ID                      NUMBER NOT NULL,
+    NAME                    VARCHAR2(128),
+    OWNER_ID                NUMBER NOT NULL,
+    OWNER_NAME              VARCHAR2(128),
+    ADVISOR_ID              NUMBER NOT NULL,
+    DESCRIPTION             VARCHAR2(256),
+    CREATED                 DATE NOT NULL,
+    LAST_MODIFIED           DATE NOT NULL,
+    PARENT_TASK_ID          NUMBER,
+    EXEC_START              DATE,
+    EXEC_END                DATE,
+    STATUS                  NUMBER NOT NULL,
+    STATUS_MSG              varchar2(30),
+    ERROR_MSG               VARCHAR2(2000),
+    HOW_CREATED             VARCHAR2(30)
+);
+tuning task 정보를 저장하는 테이블
+sql_id를 입력받은 후에
+create_tuning_task 당시 생성되는 값들(task_id, task_name, owner, created, last_modified..)
+execute_tuning_task 당시 생성되는 값들(execute_start, execute_end, status, last_modified..)
+status의 경우 create일 때 0, execute일 때 1
+```
++ sys._advisor_objects
+```
+create table sys._advisor_objects (
+    OBJ_ID                          NUMBER NOT NULL,
+    OBJ_TYPE                        VARCHAR2(64),
+    TASK_ID                         NUMBER NOT NULL,
+    EXEC_name                       VARCHAR2(128),
+    ATTR1                           VARCHAR2(4000),
+    ATTR2                           VARCHAR2(4000),
+    ATTR3                           VARCHAR2(4000),
+    ATTR4                           CLOB,
+    ATTR5                           VARCHAR2(4000),
+    ATTR6                           RAW(2000),
+    ATTR7                           NUMBER,
+    ATTR8                           NUMBER,
+    ATTR9                           NUMBER,
+    ATTR10                          NUMBER,
+    OTHER                           CLOB
+);
+각각의 task에 따라서 부과된 object_id, object_name을 조합하여 저장하는 테이블
+ATTR1 : sql_id
+ATTR2 : plan_hash_value
+ATTR3 : object_owner
+ATTR4 : sql_text
+```
++ sys._advisor_object_types
+```
+create table sys._advisor_object_types (
+    OBJ_TYPE_ID                   NUMBER,
+    OBJ_TYPE                      varchar2(64)
+);
+```
++ sys._advisor_logs
+```
+create table sys._advisor_logs (
+    OWNER                           VARCHAR2(30),
+    TASK_ID                         NUMBER NOT NULL,
+    TASK_NAME                       VARCHAR2(30),
+    EXECUTION_START                 DATE,
+    EXECUTION_END                   DATE,
+    STATUS                          VARCHAR2(11),
+    STATUS_MESSAGE                  VARCHAR2(4000),
+    PCT_COMPLETION_TIME             NUMBER,
+    PROGRESS_METRIC                 NUMBER,
+    METRIC_UNITS                    VARCHAR2(64),
+    ACTIVITY_COUNTER                NUMBER,
+    RECOMMENDATION_COUNT            NUMBER,
+    ERROR_MESSAGE                   VARCHAR2(4000)
+);
+tuning advisor 진행과정에 생성되는 중요 요소(task_id, task_name, status, error_message ..)들을 기록하는 테이블
+현재 log 테이블을 사용하는 로직은 없음
+```
