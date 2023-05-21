@@ -2,8 +2,8 @@
 SQL Tuning Advisor Design Project(Tuning Advisor 설계 프로젝트)
 
 # Purpose
-## SQL Tuning Advisor 기능을 개발하여 SQL에 대한 기본적인 Tunning 지원
-## Develop SQL_Tuning_Advisor package & Functions to use this for SQL tuning.
++ SQL Tuning Advisor 기능을 개발하여 SQL에 대한 기본적인 Tunning 지원
++ Develop SQL_Tuning_Advisor package & Functions to use this for SQL tuning.
 
 # 👨‍👩‍👧‍👦 Members
 + 정민우(Researcher)
@@ -43,7 +43,6 @@ SQL Tuning Advisor기능 레벨은 Limited Scope와 Comprehensive로
 + Update / Delete / Modify Tuning Task
 
 ## COMPREHENSIVE
-+ Tuning mode에서 기존보다 더욱 정확한 selectivity를 계산할 수 있도록 동적 샘플링 여러 번 수행하는 로직 만들기
 + Tuning mode에서 기존보다 더욱 정확한 selectivity를 계산할 수 있도록 동적 샘플링 여러 번 수행하는 로직 만들기
 + Tuning mode에서 기존보다 더욱 정확한 selectivity를 계산할 수 있도록 partial execution을 수행하는 로직 만들기
 + Tuning mode에서 past execution history를 바탕으로 optimizer mode setting (e.g. <code>FIRST_ROW, ALL_ROWS</code>)을 개선할 수 있는 로직 만들기
