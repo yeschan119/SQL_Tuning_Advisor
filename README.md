@@ -2,12 +2,12 @@
 SQL Tuning Advisor Design Project(Tuning Advisor 설계 프로젝트)
 
 # Purpose
-SQL Tuning Advisor Package를 개발하여 SQL Tunning 지원
-Develop SQL_Tuning_Advisor package & Functions to use this for SQL tuning.
+## SQL Tuning Advisor 기능을 개발하여 SQL에 대한 기본적인 Tunning 지원
+## Develop SQL_Tuning_Advisor package & Functions to use this for SQL tuning.
 
 # 👨‍👩‍👧‍👦 Members
-정민우(Researcher)
-강응찬(Researcher)
+## 정민우(Researcher)
+## 강응찬(Researcher)
 
 # Tech Stack
 + RDBMS
