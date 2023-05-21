@@ -18,17 +18,17 @@ SQL Tuning Advisor Design Project(Tuning Advisor 설계 프로젝트)
 # Milesstone
 SQL Tuning Advisor기능 레벨은 Limited Scope와 Comprehensive로
 일단 Limited Scope 개발 완료가 목표.
-## 자료 조사 및 기본 인터페이스 설계, 구현
-### week.1 : SQL Tuning Advisor관련 자료조사(Oracle Tuning Advisor 참조)
-### week.2 : SQL Tuning Advisor 조사(pkg, procedure, function 들에 대해 reverge engineering)
-### week.3 : system table, tuning package spec(pkg_dbms_sqltune.sql) 구현
-## tuning advisor package body 구현
-### week.4 : tuning package body(pkg_dbms_sqltune_internal.sql) 구현
-### week.5 : tuning package body(pkg_dbms_sqltune_internal.sql) 구현
-## tuning advisor package unility 구현(C언어로 구현)
-### week.6 : Structure Analysis 구현(parsing된 query(parse tree)를 분석하여 tuning)
-### week.7 : Structure Analysis 구현(parse tree를 이용)
-### week.8 : SQL Tuning Advisor testcase 추가
++ 자료 조사 및 기본 인터페이스 설계, 구현
+ + week.1 : SQL Tuning Advisor관련 자료조사(Oracle Tuning Advisor 참조)
+ + week.2 : SQL Tuning Advisor 조사(pkg, procedure, function 들에 대해 reverge engineering)
+ + week.3 : system table, tuning package spec(pkg_dbms_sqltune.sql) 구현
++ tuning advisor package body 구현
+ + week.4 : tuning package body(pkg_dbms_sqltune_internal.sql) 구현
+ + week.5 : tuning package body(pkg_dbms_sqltune_internal.sql) 구현
++ tuning advisor package unility 구현(C언어로 구현)
+ + week.6 : Structure Analysis 구현(parsing된 query(parse tree)를 분석하여 tuning)
+ + week.7 : Structure Analysis 구현(parse tree를 이용)
+ + week.8 : SQL Tuning Advisor testcase 추가
 
 ## LIMITED SCOPE
 + 유저가 Tuning Task를 직접 정의하고 DB가 이 Task들을 관리할 수 있도록 관련 패키지 함수 및 오브젝트 구현하기
