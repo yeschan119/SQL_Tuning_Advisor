@@ -191,7 +191,7 @@ tuning advisor 진행과정에 생성되는 중요 요소(task_id, task_name, st
 #### Create_Tuning_Task 구현
 + Create_Tuning_Task test
 ```
--- oracle처럼 sql_id를 찾아서 input값으로 넣어야 할지, 아니면 sql_text를 그대로 넣으면 알아서 sql_id를 찾아 실해하도록 해야 할지 고민..
+-- oracle처럼 sql_id를 찾아서 input값으로 넣어야 할지, 아니면 sql_text를 그대로 넣으면 알아서 sql_id를 찾아 실하도록 해야 할지 고민..
 
 -- 1. Run sql tuning advisor for sql_id=5dkrnbx1z8gcb
 
