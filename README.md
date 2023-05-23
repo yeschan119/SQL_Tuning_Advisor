@@ -27,7 +27,10 @@ SQL Tuning Advisor Design Project(Tuning Advisor 설계 프로젝트)
 + tuning advisor package unility 구현(C언어로 구현)
 	+ week.6 : Structure Analysis 구현(parsing된 query(parse tree)를 분석하여 tuning)
 	+ week.7 : Structure Analysis 구현(parse tree를 이용)
-	+ week.8 : SQL Tuning Advisor testcase 추가
++ tuning advisor testcase 추가
+	+ week.8 : create tuning task testcase 추가
+	+ week.8 : execute tuning task testcase 추가
++ tuning adviosr report 구현
 
 ## LIMITED SCOPE
 + 유저가 Tuning Task를 직접 정의하고 DB가 이 Task들을 관리할 수 있도록 관련 패키지 함수 및 오브젝트 구현하기
@@ -57,7 +60,7 @@ SQL Tuning Advisor Design Project(Tuning Advisor 설계 프로젝트)
   + PKG_DBMS_SQLTUNE_INTERNAL pkg body & spec
     + body : Execute Tuning Task 단계에서 진행하는 동작들을 수행하기 위한 함수 선언부
     + spec : body에 선언되어 있는 function, procedure들의 구현부
-  + PKG_DBMS_SQLTUNE_UTIL C언어러 구현이 필요한 subprogram들을 별도로 분리한 패키지
+  + PKG_DBMS_SQLTUNE_UTIL C언어로 구현이 필요한 subprogram들을 별도로 분리한 패키지
 #### Tuning Adviosr관련 Table들과 View들 설계
   + Tuning Advisor에 사용되는 System Table을 생성(DB Booting시 생성되는 테이블)
     + Advisor_Defitinions
