@@ -190,7 +190,7 @@ tuning advisor 진행과정에 생성되는 중요 요소(task_id, task_name, st
 현재 log 테이블을 사용하는 로직은 없음
 ```
 #### Create_Tuning_Task 구현
-+ Create_Tuning_Task test
++ Create_Tuning_Task test(아래 pl/sql을 수행시 tuning task가 생성되도록 로직 구현)
 ```
 -- oracle처럼 sql_id를 찾아서 input값으로 넣어야 할지, 아니면 sql_text를 그대로 넣으면 알아서 sql_id를 찾아 실하도록 해야 할지 고민..
 
