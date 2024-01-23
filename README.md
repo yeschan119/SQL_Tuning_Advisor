@@ -15,7 +15,7 @@ SQL Tuning Advisor Design Project(Tuning Advisor 설계 프로젝트)
 + C language
 + shell script
 
-# Milesstone
+# Milestone
 + SQL Tuning Advisor기능 레벨은 Limited Scope와 Comprehensive로 일단 Limited Scope 개발 완료가 목표.
 + 자료 조사 및 기본 인터페이스 설계, 구현
 	+ week.1 : SQL Tuning Advisor관련 자료조사(Oracle Tuning Advisor 참조)
