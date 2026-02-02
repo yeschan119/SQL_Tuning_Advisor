@@ -1,110 +1,121 @@
 # SQL_Tuning_Advisor
-SQL Tuning Advisor Design Project(Tuning Advisor 설계 프로젝트)
+SQL Tuning Advisor Design Project
 
 # Purpose
-+ SQL Tuning Advisor 기능을 개발하여 SQL에 대한 기본적인 Tunning 지원
-+ Develop SQL_Tuning_Advisor package & Functions to use this for SQL tuning.
-+ [ORACLE SQL Tuning Advisor 기능 참고](https://docs.oracle.com/en/database/oracle/oracle-database/19/tgsql/sql-tuning-advisor.html#GUID-8E1A39CB-A491-4254-8B31-9B1DF7B52AA1)
++ Develop SQL Tuning Advisor functionality to provide basic SQL tuning support
++ Develop SQL_Tuning_Advisor packages and functions to support SQL tuning
++ Reference: [Oracle SQL Tuning Advisor](https://docs.oracle.com/en/database/oracle/oracle-database/19/tgsql/sql-tuning-advisor.html#GUID-8E1A39CB-A491-4254-8B31-9B1DF7B52AA1)
+
 # 👨‍👩‍👧‍👦 Members
-+ 정민우(Researcher)
-+ 강응찬(Researcher)
++ Minwoo Jung (Researcher)
++ Eungchan Kang (Researcher)
 
 # Tech Stack
 + RDBMS
 + PL/SQL
 + C language
-+ shell script
++ Shell script
 
 # Milestone
-+ SQL Tuning Advisor기능 레벨은 Limited Scope와 Comprehensive로 일단 Limited Scope 개발 완료가 목표.
-+ 자료 조사 및 기본 인터페이스 설계, 구현
-	+ week.1 : SQL Tuning Advisor관련 자료조사(Oracle Tuning Advisor 참조)
-	+ week.2 : SQL Tuning Advisor 조사(pkg, procedure, function 들에 대해 reverge engineering)
-	+ week.3 : system table, tuning package spec(pkg_dbms_sqltune.sql) 구현
-+ tuning advisor package body 구현
-	+ week.4 : tuning package body(pkg_dbms_sqltune_internal.sql) 구현
-	+ week.5 : tuning package body(pkg_dbms_sqltune_internal.sql) 구현
-+ tuning advisor package unility 구현(C언어로 구현)
-	+ week.6 : Structure Analysis 구현(parsing된 query(parse tree)를 분석하여 tuning)
-	+ week.7 : Structure Analysis 구현(parse tree를 이용)
-+ tuning advisor testcase 추가
-	+ week.8 : create tuning task testcase 추가
-	+ week.8 : execute tuning task testcase 추가
-+ tuning adviosr report 구현
++ The SQL Tuning Advisor will initially support two levels: Limited Scope and Comprehensive Scope, with the primary goal being completion of the Limited Scope.
++ Research, basic interface design, and implementation
+  + Week 1: Research SQL Tuning Advisor concepts (referencing Oracle Tuning Advisor)
+  + Week 2: Reverse engineering of SQL Tuning Advisor components (packages, procedures, functions)
+  + Week 3: Implement system tables and tuning package specification (`pkg_dbms_sqltune.sql`)
++ Implement tuning advisor package body
+  + Week 4: Implement tuning package body (`pkg_dbms_sqltune_internal.sql`)
+  + Week 5: Implement tuning package body (`pkg_dbms_sqltune_internal.sql`)
++ Implement tuning advisor utility components (implemented in C)
+  + Week 6: Implement Structure Analysis (analyze parsed queries / parse trees for tuning)
+  + Week 7: Implement Structure Analysis using parse trees
++ Add tuning advisor test cases
+  + Week 8: Add create tuning task test cases
+  + Week 8: Add execute tuning task test cases
++ Implement tuning advisor report
 
 ## LIMITED SCOPE
-+ 유저가 Tuning Task를 직접 정의하고 DB가 이 Task들을 관리할 수 있도록 관련 패키지 함수 및 오브젝트 구현하기
-+ Tuning task의 SQL이 접근하는 DB 오브젝트 통계 missing 혹은 stale 여부 판별하는 로직 만들기
-+ Tuning task의 SQL 수행 시 접근하는 table에 대한 가상 index를 생성하고, 해당 index 적용 시의 benefit 계산하는 로직 만들기
-+ Tuning task의 SQL의 구조 및 문법들을 결과값이 바뀌지 않는 선에서 조작할 수 있는 로직을 구현하고, 조작된 각각의 쿼리들로부터 얻을 수 있는 benefit 계산하는 로직 만들기
-  + 비용이 많이 드는 Not In operation을 찾고 개선 방안 제안
-  + 비용이 많이 드는 UNION set operation을 찾고 개선 방안 제안
-  + Index data type mismatch 찾고 개선 방안 제안
-  + Cartesian product 형성하는 join predicate 찾고 개선 방안 제안
-+ Report Tuning Task 구현
-+ Update / Delete / Modify Tuning Task
++ Implement package functions and objects that allow users to define Tuning Tasks and allow the database to manage these tasks
++ Implement logic to determine whether database object statistics accessed by the Tuning Task SQL are missing or stale
++ Implement logic to create virtual indexes on tables accessed by the Tuning Task SQL and calculate the benefit of applying those indexes
++ Implement logic to transform SQL structure and syntax without changing result sets, and calculate the benefit of each transformed query
+  + Detect expensive NOT IN operations and suggest improvements
+  + Detect expensive UNION set operations and suggest improvements
+  + Detect index data type mismatches and suggest improvements
+  + Detect join predicates that cause Cartesian products and suggest improvements
++ Implement Report Tuning Task functionality
++ Implement Update / Delete / Modify Tuning Task functionality
 
 ## COMPREHENSIVE
-+ Tuning mode에서 기존보다 더욱 정확한 selectivity를 계산할 수 있도록 동적 샘플링 여러 번 수행하는 로직 만들기
-+ Tuning mode에서 기존보다 더욱 정확한 selectivity를 계산할 수 있도록 partial execution을 수행하는 로직 만들기
-+ Tuning mode에서 past execution history를 바탕으로 optimizer mode setting (e.g. <code>FIRST_ROW, ALL_ROWS</code>)을 개선할 수 있는 로직 만들기
-+ Tuning task의 SQL에 대한 alternative plan을 search하고 original plan과의 비용을 비교하는 로직 만들기
-+ 유저가 Tuning Mode 실행 결과를 리포트 형식으로 받아볼 수 있도록 로직 구현하기
++ Implement logic to perform multiple rounds of dynamic sampling in tuning mode to calculate more accurate selectivity
++ Implement logic to perform partial execution in tuning mode to calculate more accurate selectivity
++ Implement logic to improve optimizer mode settings (e.g. `FIRST_ROWS`, `ALL_ROWS`) based on past execution history
++ Implement logic to search for alternative execution plans for Tuning Task SQL and compare costs with the original plan
++ Implement logic to provide tuning mode execution results in report format
 
-## 설계(Design:Oracle Tuning Advisor 참조)
-### SQL Tuning Advisor 설계
-#### Tuning Advisor 관련 패키지 body & specification(spec) 설계
-  + PKG_DBMS_SQLTUNE pkg body & spec
-    + body : tuning advisor의 기본 기능들(create, execute, report..)을 실행할 수 있는 procedure, function 선언부
-    + spec : body에 선언되어 있는 function, procedure 들의 구현부
-  + PKG_DBMS_SQLTUNE_INTERNAL pkg body & spec
-    + body : Execute Tuning Task 단계에서 진행하는 동작들을 수행하기 위한 함수 선언부
-    + spec : body에 선언되어 있는 function, procedure들의 구현부
-  + PKG_DBMS_SQLTUNE_UTIL C언어로 구현이 필요한 subprogram들을 별도로 분리한 패키지
-#### Tuning Adviosr관련 Table들과 View들 설계
-  + Tuning Advisor에 사용되는 System Table을 생성(DB Booting시 생성되는 테이블)
-    + Advisor_Defitinions
-      + DB에는 각종 Advisor들이 존재하는데 이 Advisor들을 관리하는 테이블 생성
-        + ADDM
-        + SQL Access Advisor
-        + Undo Advisor
-        + SQL Tuning Advisor
-        + SQL Workload Manager
-        + ...
-    + Advisor_Tasks
-      + 각종 Advisor 수행 단위를 Task라고 하는데, 이 Tasks를 저장하고 관리하는 테이블
-    + Advisor_OBject_Types
-    + Advisor_Objects
-      + 각각의 Task에 따라 부과된 object_id, objec_name을 조합하여 저장하는 테이블
-    + Advisor_Logs
-      + Tuning과정을 각 단계별 Logging하는 테이블
-    + DBA_ADVISOR_DEFINITIONS view 설계
-    + DBA_ADVISOR_TASKS view 설계
-    + DBA_ADVISOR_OBJECTS view 설계
-    + DBA_ADVISOR_EXECUTIONS view 설계
-    + DBA_ADVISOR_LOG view 설계
-    + ...
-#### Create Tuning Task 설계
-  + user로부터 입력되는 값들을(ex: sql_id, scope, task_name...)이용해서 tuning task 생성.
-  + null값들에 대해 default value 생성
-  + input값들에 대해 valid check를 진행
-  + input value와 생성되 값들을 system table에 저장.
-#### Exectue Tuning Task 설계
-  + Statistical Analysis
-    + Table, Index에 대한 통계정보의 Missing or Stale 여부를 파악.
-  + Access Path Analysis
-    + Index 여부에 따른 실행 비용 최적화 여부를 판별하고 이를 제시
-    + SQL Access Advisor를 실행할 것을 제안.
-  + SQL Structural Analysis(Syntax / Semantic 단계에서 할 수 있는 쿼리 성능 저하 요소 판단 및 개선방안 제안)
-    + NOT IN을 NOT EXIST로 대체하라고 제안하거나 UNION을 UNION ALL을 대체할 것을 제안
-    + Index Column과 where절에 사용된 column의 datatype mismatch로 인한 비효율을 감지하고 이를 고칠 것을 제안
-    + Missing Join Condition을 감지(Design Mistakes)
-#### Report Tuning Task 설계
-#### Accept Sql Profile 설계
-## 구현(Implementation)
-### SQL Tuning Advisor 구현
-#### Tuning Advisor관련 Table들과 View들 구현
-  + sys._advisor_definitions - example
+## Design (Reference: Oracle Tuning Advisor)
+
+### SQL Tuning Advisor Design
+
+#### Design of Tuning Advisor Packages (Body & Specification)
++ PKG_DBMS_SQLTUNE package body & specification
+  + Body: Declarations of procedures and functions to execute core tuning advisor features (create, execute, report, etc.)
+  + Spec: Implementations of procedures and functions declared in the body
++ PKG_DBMS_SQLTUNE_INTERNAL package body & specification
+  + Body: Declarations of functions required to perform operations during the Execute Tuning Task phase
+  + Spec: Implementations of procedures and functions declared in the body
++ PKG_DBMS_SQLTUNE_UTIL
+  + Package that separates subprograms implemented in C
+
+#### Design of Tuning Advisor Tables and Views
++ Create system tables used by the Tuning Advisor (created during DB booting)
+  + Advisor_Definitions
+    + Table for managing various advisors in the database
+      + ADDM
+      + SQL Access Advisor
+      + Undo Advisor
+      + SQL Tuning Advisor
+      + SQL Workload Manager
+      + ...
+  + Advisor_Tasks
+    + Table for storing and managing advisor execution units (tasks)
+  + Advisor_Object_Types
+  + Advisor_Objects
+    + Table for storing object_id and object_name combinations assigned per task
+  + Advisor_Logs
+    + Table for logging tuning processes at each stage
+  + Design DBA_ADVISOR_DEFINITIONS view
+  + Design DBA_ADVISOR_TASKS view
+  + Design DBA_ADVISOR_OBJECTS view
+  + Design DBA_ADVISOR_EXECUTIONS view
+  + Design DBA_ADVISOR_LOG view
+  + ...
+
+#### Create Tuning Task Design
++ Create tuning tasks using user inputs (e.g. sql_id, scope, task_name)
++ Generate default values for null inputs
++ Validate input values
++ Store input values and generated values into system tables
+
+#### Execute Tuning Task Design
++ Statistical Analysis
+  + Identify missing or stale statistics for tables and indexes
++ Access Path Analysis
+  + Determine execution cost optimization based on index availability
+  + Suggest execution of SQL Access Advisor
++ SQL Structural Analysis (Detect performance degradation factors and suggest improvements at syntax/semantic level)
+  + Suggest replacing NOT IN with NOT EXISTS or UNION with UNION ALL
+  + Detect inefficiencies caused by datatype mismatches between index columns and WHERE clause columns
+  + Detect missing join conditions (design mistakes)
+
+#### Report Tuning Task Design
+#### Accept SQL Profile Design
+
+## Implementation
+
+### SQL Tuning Advisor Implementation
+
+#### Implementation of Tuning Advisor Tables and Views
++ sys._advisor_definitions - example
   ```
     create table sys._advisor_definitions (
 			ADVISOR_ID        NUMBER  NOT NULL,
