@@ -104,7 +104,7 @@ SQL Tuning Advisor Design Project(Tuning Advisor 설계 프로젝트)
 ## 구현(Implementation)
 ### SQL Tuning Advisor 구현
 #### Tuning Advisor관련 Table들과 View들 구현
-  + sys._advisor_definitions 
+  + sys._advisor_definitions - example
   ```
     create table sys._advisor_definitions (
 			ADVISOR_ID        NUMBER  NOT NULL,
@@ -112,7 +112,7 @@ SQL Tuning Advisor Design Project(Tuning Advisor 설계 프로젝트)
 			PROPERTY          NUMBER   NOT NULL
     );
  ```
-+ sys._advisor_tasks
++ sys._advisor_tasks - example
 ```
 create table sys._advisor_tasks (
     ID                      NUMBER NOT NULL,
@@ -137,7 +137,7 @@ create_tuning_task 당시 생성되는 값들(task_id, task_name, owner, created
 execute_tuning_task 당시 생성되는 값들(execute_start, execute_end, status, last_modified..)
 status의 경우 create일 때 0, execute일 때 1
 ```
-+ sys._advisor_objects
++ sys._advisor_objects - example
 ```
 create table sys._advisor_objects (
     OBJ_ID                          NUMBER NOT NULL,
@@ -162,14 +162,14 @@ ATTR2 : plan_hash_value
 ATTR3 : object_owner
 ATTR4 : sql_text
 ```
-+ sys._advisor_object_types
++ sys._advisor_object_types - example
 ```
 create table sys._advisor_object_types (
     OBJ_TYPE_ID                   NUMBER,
     OBJ_TYPE                      varchar2(64)
 );
 ```
-+ sys._advisor_logs
++ sys._advisor_logs - example
 ```
 create table sys._advisor_logs (
     OWNER                           VARCHAR2(30),
@@ -190,7 +190,7 @@ tuning advisor 진행과정에 생성되는 중요 요소(task_id, task_name, st
 현재 log 테이블을 사용하는 로직은 없음
 ```
 #### Create_Tuning_Task 구현
-+ Create_Tuning_Task test(아래 pl/sql을 수행시 tuning task가 생성되도록 로직 구현)
++ Create_Tuning_Task test(아래 pl/sql을 수행시 tuning task가 생성되도록 로직 구현) - example
 ```
 -- oracle처럼 sql_id를 찾아서 input값으로 넣어야 할지, 아니면 sql_text를 그대로 넣으면 알아서 sql_id를 찾아 실하도록 해야 할지 고민..
 
