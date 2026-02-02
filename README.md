@@ -1,6 +1,8 @@
 # SQL_Tuning_Advisor
 SQL Tuning Advisor Design Project
 
+[한국어 🇰🇷](README.ko.md)
+
 # Purpose
 + Develop SQL Tuning Advisor functionality to provide basic SQL tuning support
 + Develop SQL_Tuning_Advisor packages and functions to support SQL tuning
