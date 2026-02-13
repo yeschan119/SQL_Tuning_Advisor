@@ -126,7 +126,7 @@ SQL Tuning Advisor Design Project
     );
  ```
 + sys._advisor_tasks - example
-```
+
 create table sys._advisor_tasks (
     ID                      NUMBER NOT NULL,
     NAME                    VARCHAR2(128),
@@ -144,6 +144,7 @@ create table sys._advisor_tasks (
     ERROR_MSG               VARCHAR2(2000),
     HOW_CREATED             VARCHAR2(30)
 );
+```
 tuning task 정보를 저장하는 테이블
 sql_id를 입력받은 후에
 create_tuning_task 당시 생성되는 값들(task_id, task_name, owner, created, last_modified..)
@@ -151,7 +152,7 @@ execute_tuning_task 당시 생성되는 값들(execute_start, execute_end, statu
 status의 경우 create일 때 0, execute일 때 1
 ```
 + sys._advisor_objects - example
-```
+
 create table sys._advisor_objects (
     OBJ_ID                          NUMBER NOT NULL,
     OBJ_TYPE                        VARCHAR2(64),
