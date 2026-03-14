@@ -1,7 +1,7 @@
 # SQL_Tuning_Advisor
 SQL Tuning Advisor Design Project
 
-<p align="right">
+<p align="left">
   🇺🇸 English | 🇰🇷 <a href="./README.ko.md">한국어</a>
 </p>
 
