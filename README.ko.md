@@ -12,7 +12,7 @@ SQL Tuning Advisor Design Project(Tuning Advisor 설계 프로젝트)
 # Tech Stack
 + RDBMS
 + PL/SQL
-+ C language
++ C++ language
 + shell script
 
 # Milestone
