@@ -1,6 +1,8 @@
 # SQL_Tuning_Advisor
 SQL Tuning Advisor Design Project(Tuning Advisor 설계 프로젝트)
 
+[English 🇬🇧](README.ko.md)
+
 # Purpose
 + SQL Tuning Advisor 기능을 개발하여 SQL에 대한 기본적인 Tunning 지원
 + Develop SQL_Tuning_Advisor package & Functions to use this for SQL tuning.
@@ -12,7 +14,7 @@ SQL Tuning Advisor Design Project(Tuning Advisor 설계 프로젝트)
 # Tech Stack
 + RDBMS
 + PL/SQL
-+ C++ language
++ C language
 + shell script
 
 # Milestone
