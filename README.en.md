@@ -2,7 +2,7 @@
 SQL Tuning Advisor Design Project
 
 <p align="left">
-  🇺🇸 English | 🇰🇷 <a href="./README.ko.md">한국어</a>
+  🇺🇸 English | 🇰🇷 <a href="./README.md">한국어</a>
 </p>
 
 # Purpose
